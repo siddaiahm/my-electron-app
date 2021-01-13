@@ -1,16 +1,54 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <style>
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #333;
+                color: white;
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            body {
+                background: #ddd;
+                color: black;
+            }
+        }
+    </style>
 </head>
-<body style="background: white;">
+
+<body >
+    <div style="display:flex;justify-content:flex-end;">
+        <button id="toggle-dark-mode" style="padding: 10px;">Toggle Dark Mode</button>
+        <button id="reset-to-system" style="padding: 10px;">Reset to System Theme</button>
+    </div>
     <h1>Hello World!</h1>
     <p>
-        We are using node <script>document.write(process.versions.node)</script>,
-        Chrome <script>document.write(process.versions.chrome)</script>,
-        and Electron <script>document.write(process.versions.electron)</script>.
+        We are using node
+        <script>document.write(process.versions.node)</script>,
+        Chrome
+        <script>document.write(process.versions.chrome)</script>,
+        and Electron
+        <script>document.write(process.versions.electron)</script>.
     </p>
+    <script type="text/javascript">
+        const { ipcRenderer } = require('electron')
+
+        document.getElementById('toggle-dark-mode').addEventListener('click', async () => {
+            const isDarkMode = await ipcRenderer.invoke('dark-mode:toggle')
+            document.getElementById('theme-source').innerHTML = isDarkMode ? 'Dark' : 'Light'
+        })
+
+        document.getElementById('reset-to-system').addEventListener('click', async () => {
+            await ipcRenderer.invoke('dark-mode:system')
+            document.getElementById('theme-source').innerHTML = 'System'
+        })
+    </script>
 </body>
+
 </html>
