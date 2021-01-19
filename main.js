@@ -1,5 +1,6 @@
 const { app, BrowserWindow,ipcMain,nativeTheme } = require('electron')
 
+require('electron-reload')(".");
 function createWindow () {
   const win = new BrowserWindow({
     width: 800,

@@ -1,0 +1,393 @@
+$meter-width:25rem;
+$meter-height:$meter-width;
+
+$charge-width:10rem;
+$charge-height:$charge-width;
+
+$ring-size: 1.5%;
+$ring-color: #333;
+
+$grad-font-size: 1.25rem;
+$grad-color: #555;
+
+$tick-color: $grad-color;
+
+$color1:#06beb6;
+$color2:#48b1bf;
+$color3:#29ffc6;
+
+$meter-bg-color:linear-gradient($color1,$color2,$color3);
+$meter-border-width:4rem;
+$charge-border-width:2rem;
+
+$red: #e74c3c;
+$green:#29ffc6;
+@mixin shadow ($level: 2, $inset: false) {
+
+	@if $inset {
+ 
+		  @if $level == 1 {
+			  box-shadow: inset 0 1px 3px rgba(0,0,0,0.12), inset 0 1px 2px rgba(0,0,0,0.24);
+		  } @else if $level == 2 {
+			  box-shadow: inset 0 3px 6px rgba(0,0,0,0.16), inset 0 3px 6px rgba(0,0,0,0.23);
+		  } @else if $level == 3 {
+			  box-shadow: inset 0 10px 20px rgba(0,0,0,0.19), inset 0 6px 6px rgba(0,0,0,0.23);
+		  } @else if $level == 4 {
+			  box-shadow: inset 0 14px 28px rgba(0,0,0,0.25), inset 0 10px 10px rgba(0,0,0,0.22);
+		  } @else if $level == 5 {
+			  box-shadow: inset 0 19px 38px rgba(0,0,0,0.30), inset 0 15px 12px rgba(0,0,0,0.22);
+		  }
+ 
+	 }	@else {
+		 @if $level == 1 {
+			 box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+		 } @else if $level == 2 {
+			 box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+		 } @else if $level == 3 {
+			 box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+		 } @else if $level == 4 {
+			 box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+		 } @else if $level == 5 {
+			 box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+		 }
+	 }
+ }
+ 
+
+@import url(https://fonts.googleapis.com/css?family=Coda:400|Roboto+Mono:400,400italic);
+
+* {
+	box-sizing: border-box;
+}
+
+.display-flex{
+	display:flex;
+    justify-content: center;
+	align-items: center;
+}
+
+.dashboard {
+	@extend .display-flex;
+}
+.circle{
+	@extend .display-flex;
+	position: absolute;
+	overflow:hidden;
+	border-radius:50%;
+}
+
+@mixin progressStyle($width,$height,$border-width,$bg-color:linear-gradient(#e6dada,#275046)){
+	.circle-wrap{
+		position: absolute;
+		overflow: hidden;
+		top: 0;
+		width:$width/2;
+		height:$height;
+	}
+	.circle-loader{
+		position: absolute;
+		top: 0;
+		background-color: $green;
+		border-radius: 1000px;
+		width:$width/2;
+		height:$height;
+	}
+	.circle1{
+		@extend .circle;
+		height:$height;
+		width:$width;
+	}
+	.circle1-1{
+		@extend .circle-wrap;
+		left:0
+	}
+	
+	.circle1-2{
+		@extend .circle-loader;
+		left:$width/2;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		&.redzone{
+			background-color: $red;
+		}
+	}
+	.circle2{
+		@extend .circle-wrap;
+		left:$width/2;
+	}
+	
+	.circle2-1{
+		@extend .circle-loader;
+		left:-$width/2;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+		&.redzone{
+			background-color: $red;
+		}
+	}
+	.inner-circle{
+		@extend .circle;
+		position: absolute;
+		height:$height - $border-width;
+		width:$width - $border-width;
+		background-image: $bg-color;
+		flex-direction: column;
+		div {
+			@extend .display-flex;
+			font-weight: bold;
+			span{
+				font-size: 1.5rem;
+				i{
+					font-size: 0.7rem;
+				}
+			}
+			i{
+				font-size: 2.5rem;
+				i {
+					font-size: 2rem;
+				}
+			}
+		}
+		span {
+			font-weight: bold;
+			margin-top: 15px;
+		}
+		&.redzone{
+			color:$red;
+		}
+	}
+}
+
+.charge{
+	position: relative;
+	width:$charge-width;
+	height:$charge-height;
+	background-color: white;
+	border-radius: 50%;
+	align-self: flex-end;
+	@extend .display-flex;
+	@include shadow(2, true);
+	&:before {
+		content: "";
+		display: block;
+		position: absolute;
+		width: 100% + $ring-size * 2;
+		left: -$ring-size;
+		top: -$ring-size;
+		bottom: -$ring-size;
+		border-radius: 50%;
+		background: $ring-color;
+		z-index: -1;
+		@include shadow(3);
+	}
+	@include progressStyle($charge-width,$charge-height,$charge-border-width,$meter-bg-color)
+}
+.charge-icon{
+	position: absolute;
+	top:13%;
+	left:35%;
+	color:white;
+}
+.meter{
+	@extend .display-flex;
+    position: relative;
+	width:$meter-width;
+    height:$meter-height;
+    background-color: white;
+	border-radius: 50%;
+	@include shadow(2, true);
+	&:before {
+		content: "";
+		display: block;
+		position: absolute;
+		width: 100% + $ring-size * 2;
+		left: -$ring-size;
+		top: -$ring-size;
+		bottom: -$ring-size;
+		border-radius: 50%;
+		background: $ring-color;
+		z-index: -1;
+		@include shadow(3);
+	}
+	
+	@include progressStyle($meter-width,$meter-height,$meter-border-width,$meter-bg-color);
+}
+.bar-bottom{
+	position: absolute;
+	@extend .circle;
+	height:$meter-height;
+	width:$meter-width;
+	overflow: hidden;
+}
+.bar-bottom1{
+	position: absolute;
+	bottom:0;
+	width: $meter-width/1.57;
+	height: $meter-height/4.5;
+	background-color: black;
+}
+
+.label {
+	position: absolute;
+	left: 50%;
+	transform: translate3d(-50%, -50%, 0);
+	text-align: center;
+	
+	span {
+		text-transform: uppercase;
+	}
+}
+
+.label-unit {
+	top: 85.5%;
+	
+	div {
+		
+		font-size: 1rem;
+
+		.meter--big-label & {
+			font-size: 0;
+		}
+	}
+}
+
+.label-value {
+	top: 50%;
+	line-height: 1.25;
+	
+	div, span {
+		font-size: 0;
+
+		.meter--big-label & {
+			font-size: 2.5rem;
+		}
+	}
+	
+	div {
+		font-family: 'Roboto Mono', monospace;
+		font-style: italic;
+	}
+	
+	span {
+		.meter--big-label & {
+			font-size: 1rem;
+		}
+	}
+	
+	span {
+		display: block;
+		position: absolute;
+		left: 50%;
+		transform: translate3d(-50%, 0, 0);
+	}
+}
+
+.grad {
+	position: absolute;
+    display: inline-block;
+	font-size: $grad-font-size;
+	line-height: 1;
+	transform: translate3d(-50%, -50%, 0);
+    font-weight: bold;
+	
+	&.redzone {
+		color: $red;
+	}
+}
+
+.grad-tick,
+.grad-tick--half,
+.grad-tick--quarter {
+    opacity: 0.5;
+	&.redzone {
+		background-color: $red;
+	}
+}
+
+
+.grad-tick {
+	position: absolute;
+	display: block;
+	width: 4px;
+	height: 0.75em;
+	transform-origin: 50% 0;
+	background-color: $tick-color;
+}
+
+.grad-tick--half {
+	width: 2px;
+	height: 0.5em;
+}
+
+.grad-tick--quarter {
+	width: 2px;
+	height: 0.25em;
+}
+
+// UI
+
+.loader {
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate3d(-50%, -50%, 0);
+	background: tomato;
+	color: white;
+	padding: 2rem;
+	text-transform: uppercase;
+	
+	&.active {
+		display: inline-block;
+	}
+}
+
+.btn-grps{
+	position: fixed;
+	top: 0.5rem;
+	right: 0.5rem;
+}
+.btn-volume{
+	width: 2.5rem;
+	height: 2.53rem;
+	line-height: 2rem;
+	border-radius: 50%;
+	background: transparent;
+	color: gray;
+	border: 4px solid;
+	font-size: 1.5rem;
+	font-weight: bold;
+	
+	&.active {
+		color: tomato;
+		border-color: tomato;
+	}
+}
+
+// DEMO STYLES
+
+body {
+	text-align: center;
+}
+
+.head,
+.help {
+	padding: 1rem;
+	color: #888;
+	text-align: center;
+	font-style: italic;
+	margin-top: 10px;
+}
+
+.help {
+	border-top: 1px solid;
+}
+
+.head {
+	border-bottom: 1px solid;
+}
+
+h1 {
+	font-weight: normal;
+	text-transform: uppercase;
+}
