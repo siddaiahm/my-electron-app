@@ -324,9 +324,9 @@
 }
 
 .btn-grps {
-  position: fixed;
-  top: 0.5rem;
-  right: 0.5rem;
+  position: absolute;
+  bottom: 0;
+  right:0;
 }
 
 .btn-volume {
@@ -339,6 +339,7 @@
   border: 4px solid;
   font-size: 1.5rem;
   font-weight: bold;
+  margin:5px;
 }
 .btn-volume.active {
   color: tomato;
@@ -360,6 +361,9 @@ body {
 
 .help {
   border-top: 1px solid;
+  width:100%;
+  position: absolute;
+  bottom:0;
 }
 
 .head {

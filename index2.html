@@ -51,13 +51,36 @@
                 color:white;
             }
         }
+        .navBar{
+    display:flex;
+    width:100%;
+}
+.navitem{
+    text-decoration:none;
+    padding:10px 12px;
+    align-items: center;
+    justify-content: center;
+    margin:1px;
+    display: flex;
+    flex:1;
+    background-color:grey;
+    color:white
+}
     </style>
 </head>
 
 <body >
-    <div style="position:fixed;top:5px;">
-        <i class="fa fa-adjust" id="toggle-dark-mode" style="font-size: 2rem;margin-left:5px" ></i>
-    </div>
+    <div class="navBar">
+          
+        <a href="index.html" class="navitem">Theme 0</a>
+
+      
+        <a href="index1.html" class="navitem">Theme 1</a>
+        <a href="index2.html" class="navitem">Theme 2</a>
+ </div>
+ <div style="position:fixed;bottom:0;">
+    <button style="background-color: transparent;border:0" id="toggle-dark-mode"><i class="fa fa-adjust"  style="font-size: 2.5rem;margin-left:5px" ></i></button>
+</div>
     <div>
     
         <h1>Engine simulator</h1>

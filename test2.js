@@ -285,7 +285,7 @@ let
 	
 	// BATTERY CONFIG
 
-	let soc=2;
+	let soc=50;
 	// Helper functions
 	
 	charge.setValue(soc);

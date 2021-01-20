@@ -1,9 +1,6 @@
-$meter-width:25rem;
-$meter-height:$meter-width;
+$meter-bg-color: white;
 
-$bar-size:30px;
-
-$ring-size: 1.5%;
+$ring-size: 3.5%;
 $ring-color: #333;
 
 $grad-font-size: 1.25rem;
@@ -12,53 +9,53 @@ $grad-color: #555;
 
 $tick-color: $grad-color;
 
-$color1:#06beb6;
-$color2:#48b1bf;
-$color3:#29ffc6;
+$needle-width: 5px;
+$needle-side-width: 3px;
+$needle-height: 140px;
+$needle-color: #e30;
+$needle-shading: 5%;
 
-$red:red;
-$green:#29ffc6;
+$needle-axle-bg-color: $ring-color;
+$needle-axle-color: #eee;
+$needle-axle-size: 15%;
+$needle-axle-size-big: 37.5%;
 
-$charge-width:10rem;
-$charge-height:$charge-width;
-$charge-border-width:2rem;
+$label-color: $grad-color;
 
-$meter-bg-color:linear-gradient($color1,$color2,$color3);
-
-
-$gradiant-color :mix($color1, $color2,50%);
 
 @mixin shadow ($level: 2, $inset: false) {
 
-	@if $inset {
- 
-		  @if $level == 1 {
-			  box-shadow: inset 0 1px 3px rgba(0,0,0,0.12), inset 0 1px 2px rgba(0,0,0,0.24);
-		  } @else if $level == 2 {
-			  box-shadow: inset 0 3px 6px rgba(0,0,0,0.16), inset 0 3px 6px rgba(0,0,0,0.23);
-		  } @else if $level == 3 {
-			  box-shadow: inset 0 10px 20px rgba(0,0,0,0.19), inset 0 6px 6px rgba(0,0,0,0.23);
-		  } @else if $level == 4 {
-			  box-shadow: inset 0 14px 28px rgba(0,0,0,0.25), inset 0 10px 10px rgba(0,0,0,0.22);
-		  } @else if $level == 5 {
-			  box-shadow: inset 0 19px 38px rgba(0,0,0,0.30), inset 0 15px 12px rgba(0,0,0,0.22);
-		  }
- 
-	 }	@else {
+   @if $inset {
+
 		 @if $level == 1 {
-			 box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+			 box-shadow: inset 0 1px 3px rgba(0,0,0,0.12), inset 0 1px 2px rgba(0,0,0,0.24);
 		 } @else if $level == 2 {
-			 box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+			 box-shadow: inset 0 3px 6px rgba(0,0,0,0.16), inset 0 3px 6px rgba(0,0,0,0.23);
 		 } @else if $level == 3 {
-			 box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+			 box-shadow: inset 0 10px 20px rgba(0,0,0,0.19), inset 0 6px 6px rgba(0,0,0,0.23);
 		 } @else if $level == 4 {
-			 box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+			 box-shadow: inset 0 14px 28px rgba(0,0,0,0.25), inset 0 10px 10px rgba(0,0,0,0.22);
 		 } @else if $level == 5 {
-			 box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+			 box-shadow: inset 0 19px 38px rgba(0,0,0,0.30), inset 0 15px 12px rgba(0,0,0,0.22);
 		 }
-	 }
- }
- 
+
+	}	@else {
+		@if $level == 1 {
+			box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+		} @else if $level == 2 {
+			box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+		} @else if $level == 3 {
+			box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+		} @else if $level == 4 {
+			box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+		} @else if $level == 5 {
+			box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+		}
+	}
+}
+
+
+
 
 @import url(https://fonts.googleapis.com/css?family=Coda:400|Roboto+Mono:400,400italic);
 
@@ -66,139 +63,20 @@ $gradiant-color :mix($color1, $color2,50%);
 	box-sizing: border-box;
 }
 
-.display-flex{
-	display:flex;
-    justify-content: center;
-	align-items: center;
-}
-
 .dashboard {
-	@extend .display-flex;
-}
-.circle{
-	@extend .display-flex;
-	position: absolute;
-	overflow:hidden;
-	border-radius:50%;
+	display: inline-block;
+	padding: 2rem;
+	font-family: 'Coda', cursive;
 }
 
-@mixin progressStyle($width,$height,$border-width,$bg-color:linear-gradient(#e6dada,#275046)){
-	.circle-wrap{
-		position: absolute;
-		overflow: hidden;
-		top: 0;
-		width:$width/2;
-		height:$height;
-	}
-	.circle-loader{
-		position: absolute;
-		top: 0;
-		background-color: $green;
-		border-radius: 1000px;
-		width:$width/2;
-		height:$height;
-	}
-	.circle1{
-		@extend .circle;
-		height:$height;
-		width:$width;
-	}
-	.circle1-1{
-		@extend .circle-wrap;
-		left:0
-	}
-	
-	.circle1-2{
-		@extend .circle-loader;
-		left:$width/2;
-		border-top-left-radius: 0;
-		border-bottom-left-radius: 0;
-		&.redzone{
-			background-color: $red;
-		}
-	}
-	.circle2{
-		@extend .circle-wrap;
-		left:$width/2;
-	}
-	
-	.circle2-1{
-		@extend .circle-loader;
-		left:-$width/2;
-		border-top-right-radius: 0;
-		border-bottom-right-radius: 0;
-		&.redzone{
-			background-color: $red;
-		}
-	}
-	.inner-circle{
-		@extend .circle;
-		position: absolute;
-		height:$height - $border-width;
-		width:$width - $border-width;
-		background-image: $bg-color;
-		flex-direction: column;
-		div {
-			@extend .display-flex;
-			font-weight: bold;
-			span{
-				font-size: 1.5rem;
-				i{
-					font-size: 0.7rem;
-				}
-			}
-			i{
-				font-size: 2.5rem;
-				i {
-					font-size: 2rem;
-				}
-			}
-		}
-		span {
-			font-weight: bold;
-			margin-top: 15px;
-		}
-		&.redzone{
-			color:$red;
-		}
-	}
-}
-.charge{
+.meter {
+	display: inline-block;
 	position: relative;
-	width:$charge-width;
-	height:$charge-height;
-	background-color: white;
+	width: 20rem;
+	height: 20rem;
+	background-color: $meter-bg-color;
 	border-radius: 50%;
-	align-self: flex-end;
-	@extend .display-flex;
-	@include shadow(2, true);
-	&:before {
-		content: "";
-		display: block;
-		position: absolute;
-		width: 100% + $ring-size * 2;
-		left: -$ring-size;
-		top: -$ring-size;
-		bottom: -$ring-size;
-		border-radius: 50%;
-		background: $ring-color;
-		z-index: -1;
-		@include shadow(3);
-	}
-	@include progressStyle($charge-width,$charge-height,$charge-border-width,$meter-bg-color)
-}
-.charge-icon{
-	position: absolute;
-	top:13%;
-	left:35%;
-	color:white;
-}
-.meter{
-	position: relative;
-    width:$meter-width;
-    height:$meter-height;
-    background-image: $meter-bg-color;
-	border-radius: 50%;
+	margin: 0 0.5rem;
 	@include shadow(2, true);
 	
 	&:before {
@@ -217,10 +95,15 @@ $gradiant-color :mix($color1, $color2,50%);
 }
 
 .label {
-	position: relative;
+	position: absolute;
 	left: 50%;
 	transform: translate3d(-50%, -50%, 0);
 	text-align: center;
+	color: $label-color;
+
+	&.label-value {
+		color: $needle-axle-color;
+	}
 	
 	span {
 		text-transform: uppercase;
@@ -228,7 +111,7 @@ $gradiant-color :mix($color1, $color2,50%);
 }
 
 .label-unit {
-	top: 85.5%;
+	top: 82.5%;
 	
 	div {
 		
@@ -271,81 +154,89 @@ $gradiant-color :mix($color1, $color2,50%);
 	}
 }
 
-.bar {
-    position:absolute;
-    top:0;
-    left:0;
-    width: $meter-width;
-    height: $meter-height;
-    border-radius:50%;
-    box-sizing: border-box;
-    border:$bar-size solid #eee;
-    border-bottom-color: $gradiant-color ;
-	border-right-color:$gradiant-color;
-	animation: mymove2 10s infinite; 
-	&.redzone {
-		border-bottom-color: red;
-		border-right-color:red;
-	}    
+.needle {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	display: block;
+	width: $needle-width;
+	height: $needle-height;
+	transform: translate3d(-50%, 0, 0);
+	transform-origin: 50% 0;
+	background-color: $needle-color;
+	@include shadow(1);
+
+	&:before,
+	&:after {
+		display: block;
+		position: absolute;
+		content: "";
+		width: 0;
+		height: 0;
+		border-style: solid;
+	}
+	
+	&:before {
+		left: -$needle-side-width;
+		border-width: 0 $needle-side-width $needle-height 0;
+		border-color: transparent lighten($needle-color, $needle-shading * 2) transparent transparent;
+	}
+	
+	&:after {
+		right: -$needle-side-width;
+		border-width: $needle-height $needle-side-width 0 0;
+		border-color: darken($needle-color, $needle-shading) transparent transparent transparent;
+	}
 }
 
-.barbottom {
-    position:absolute;
-    top:$meter-height/2;
-    left:0;
-    width: $meter-width;
-    height: $meter-height/2;
-    box-sizing: border-box;
-    border:$bar-size solid #eee;
-	border-top: 0;
-	border-bottom: 0;
-    border-bottom-left-radius: $meter-width;
-	border-bottom-right-radius: $meter-width;
-	border-left-color:$gradiant-color;
-	animation: mymove 10s infinite; 
-	&.redzone {
-		border-left-color:red;
-	} 
+.needle-axle {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	display: block;
+	width: $needle-axle-size;
+	height: $needle-axle-size;
+	transform: translate3d(-50%, -50%, 0);
+	border-radius: 50%;
+	background-color: $needle-axle-bg-color;
+	color: $needle-axle-color;
+	@include shadow(2);
+	cursor: pointer;
+	
+	&:hover {
+		background-color: darken($needle-axle-bg-color, 20%);
+	}
+	
+	.meter--big-label & {
+		width: $needle-axle-size-big;
+		height: $needle-axle-size-big;
+	}
 }
 
-@keyframes mymove {
-	50% {border-left-color: $color3;}
-  }
-  @keyframes mymove2 {
-	50% {border-right-color: $color3;border-bottom-color: $color3;}
-  }
-
-.barbottom1 {
-    position:absolute;
-    top:$meter-height/2;
-    left:0;
-    width: $meter-width;
-    height: $meter-height/2;
-    box-sizing: border-box;
-    border:$bar-size   solid black;
-	border-top: 0;
-	border-bottom-left-radius: $meter-width;
-    border-bottom-right-radius: $meter-width;
-}
 .grad {
 	position: absolute;
-    display: inline-block;
+	display: inline-block;
 	font-size: $grad-font-size;
 	line-height: 1;
+	color: $grad-color;
 	transform: translate3d(-50%, -50%, 0);
-    font-weight: bold;
+	font-weight: bold;
 	
 	&.redzone {
-		color: $red;
+		color: $needle-color;
+	}
+
+	.meter--rpm & {
+		font-size: $grad-font-size-big;
 	}
 }
 
 .grad-tick,
 .grad-tick--half,
 .grad-tick--quarter {
-    opacity: 0.5;
+
 	&.redzone {
-		background-color: $red;
+		background-color: $needle-color;
 	}
 }
 
@@ -369,6 +260,42 @@ $gradiant-color :mix($color1, $color2,50%);
 	height: 0.25em;
 }
 
+
+// Gear-meter
+
+.meter--gear {
+	width: 5rem;
+	height: 5rem;
+	margin: 0;
+	margin-left: -2rem;
+	margin-right: -2rem;
+	@include shadow(2, true);
+
+	&:before {
+		width: 100% + $ring-size * 4 * 2;
+		height: 100% + $ring-size * 4 * 2;
+		left: -$ring-size * 4;
+		top: -$ring-size * 4;
+		bottom: -$ring-size * 4;
+	}
+
+	div {
+		font-size: 2.5rem;
+		text-align: center;
+		line-height: 5rem;
+		font-family: 'Roboto Mono', monospace;
+		font-style: italic;
+		font-weight: bold;
+		color: $grad-color;
+
+		&.redzone {
+			color: $needle-color;
+		}
+	}
+
+}
+
+
 // UI
 
 .loader {
@@ -386,12 +313,12 @@ $gradiant-color :mix($color1, $color2,50%);
 		display: inline-block;
 	}
 }
-.btn-grps{
+
+.btn-volume {
 	position: fixed;
 	top: 0.5rem;
 	right: 0.5rem;
-}
-.btn-volume{
+
 	width: 2.5rem;
 	height: 2.53rem;
 	line-height: 2rem;
@@ -420,7 +347,6 @@ body {
 	color: #888;
 	text-align: center;
 	font-style: italic;
-	margin-top: 10px;
 }
 
 .help {
@@ -432,6 +358,7 @@ body {
 }
 
 h1 {
+	margin: 0;
 	font-weight: normal;
 	text-transform: uppercase;
 }

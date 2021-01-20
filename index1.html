@@ -16,12 +16,6 @@
             #toggle-dark-mode{
                 color:white;
             }
-            .barbottom1 {
-    border-color:white;
-            }
-            .charge-icon{
-                color:black;
-            }
         }
 
         @media (prefers-color-scheme: light) {
@@ -32,36 +26,52 @@
             #toggle-dark-mode{
                 color:black;
             }
-            .barbottom1 {
-                border-color:black;
-            }
-            .charge-icon{
-                color:white;
-            }
         }
+        .navBar{
+    display:flex;
+    width:100%;
+}
+.navitem{
+    text-decoration:none;
+    padding:10px 12px;
+    align-items: center;
+    justify-content: center;
+    margin:1px;
+    display: flex;
+    flex:1;
+    background-color:grey;
+    color:white
+}
     </style>
 </head>
 
 <body >
-    <div style="position:fixed;top:5px;">
-        <i class="fa fa-adjust" id="toggle-dark-mode" style="font-size: 2rem;margin-left:5px" ></i>
-    </div>
+    <div class="navBar">
+          
+        <a href="index.html" class="navitem">Theme 0</a>
+
+      
+        <a href="index1.html" class="navitem">Theme 1</a>
+        <a href="index2.html" class="navitem">Theme 2</a>
+ </div>
+ <div style="position:fixed;bottom:0;">
+    <button style="background-color: transparent;border:0" id="toggle-dark-mode"><i class="fa fa-adjust" style="font-size: 2.5rem;margin-left:5px" ></i></button>
+</div>
     <div>
     
-        <h1>Engine simulator</h1>
+        <h2>Engine simulator</h2>
     <div class="dashboard">
-        <div class="charge">
-        </div>
-        <div class="meter meter--big-label"></div>
+        <div class="meter meter--rpm meter--big-lable"></div>
+        <div class="meter meter--gear"><div>1</div></div>
+        <div class="meter meter--speed"></div>
     </div>
     <div class="help">
         Accelerate / brake : up/down arrow<br>
+        Gears +/- : left/right arrows<br>
     </div>
-</div>
-<div class="btn-grps">
-    <button class="btn-volume active" id="btn-volume">♩</button>
-    <button class="btn-volume" id="btn-charge"><i class="fa fa-plug"></i></button>
-</div>
+    <button class="btn-volume active">♩</button>
+
+<div class="loader active">Loading...</div>
     <script src="test1.js"></script>
     <script type="text/javascript">
         const { ipcRenderer } = require('electron')

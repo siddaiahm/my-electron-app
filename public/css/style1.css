@@ -17,8 +17,8 @@
 
 .charge {
   position: relative;
-  width: 7rem;
-  height: 7rem;
+  width: 10rem;
+  height: 10rem;
   background-color: white;
   border-radius: 50%;
   align-self: flex-end;
@@ -41,26 +41,26 @@
   position: absolute;
   overflow: hidden;
   top: 0;
-  width: 3.5rem;
-  height: 7rem;
+  width: 5rem;
+  height: 10rem;
 }
 .charge .circle-loader, .charge .circle2-1, .charge .circle1-2 {
   position: absolute;
   top: 0;
   background-color: #29ffc6;
   border-radius: 1000px;
-  width: 3.5rem;
-  height: 7rem;
+  width: 5rem;
+  height: 10rem;
 }
 .charge .circle1 {
-  height: 7rem;
-  width: 7rem;
+  height: 10rem;
+  width: 10rem;
 }
 .charge .circle1-1 {
   left: 0;
 }
 .charge .circle1-2 {
-  left: 3.5rem;
+  left: 5rem;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -68,10 +68,10 @@
   background-color: red;
 }
 .charge .circle2 {
-  left: 3.5rem;
+  left: 5rem;
 }
 .charge .circle2-1 {
-  left: -3.5rem;
+  left: -5rem;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -80,8 +80,8 @@
 }
 .charge .inner-circle {
   position: absolute;
-  height: 6rem;
-  width: 6rem;
+  height: 8rem;
+  width: 8rem;
   background-image: linear-gradient(#06beb6, #48b1bf, #29ffc6);
   flex-direction: column;
 }
@@ -117,8 +117,8 @@
 
 .meter {
   position: relative;
-  width: 20rem;
-  height: 20rem;
+  width: 25rem;
+  height: 25rem;
   background-image: linear-gradient(#06beb6, #48b1bf, #29ffc6);
   border-radius: 50%;
   box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.16), inset 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -185,11 +185,11 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 20rem;
-  height: 20rem;
+  width: 25rem;
+  height: 25rem;
   border-radius: 50%;
   box-sizing: border-box;
-  border: 25px solid #eee;
+  border: 30px solid #eee;
   border-bottom-color: #27b8bb;
   border-right-color: #27b8bb;
   animation: mymove2 10s infinite;
@@ -201,16 +201,16 @@
 
 .barbottom {
   position: absolute;
-  top: 10rem;
+  top: 12.5rem;
   left: 0;
-  width: 20rem;
-  height: 10rem;
+  width: 25rem;
+  height: 12.5rem;
   box-sizing: border-box;
-  border: 25px solid #eee;
+  border: 30px solid #eee;
   border-top: 0;
   border-bottom: 0;
-  border-bottom-left-radius: 20rem;
-  border-bottom-right-radius: 20rem;
+  border-bottom-left-radius: 25rem;
+  border-bottom-right-radius: 25rem;
   border-left-color: #27b8bb;
   animation: mymove 10s infinite;
 }
@@ -231,21 +231,21 @@
 }
 .barbottom1 {
   position: absolute;
-  top: 10rem;
+  top: 12.5rem;
   left: 0;
-  width: 20rem;
-  height: 10rem;
+  width: 25rem;
+  height: 12.5rem;
   box-sizing: border-box;
-  border: 25px solid black;
+  border: 30px solid black;
   border-top: 0;
-  border-bottom-left-radius: 20rem;
-  border-bottom-right-radius: 20rem;
+  border-bottom-left-radius: 25rem;
+  border-bottom-right-radius: 25rem;
 }
 
 .grad {
   position: absolute;
   display: inline-block;
-  font-size: 1rem;
+  font-size: 1.25rem;
   line-height: 1;
   transform: translate3d(-50%, -50%, 0);
   font-weight: bold;
@@ -269,19 +269,19 @@
   position: absolute;
   display: block;
   width: 4px;
-  height: 0.5em;
+  height: 0.75em;
   transform-origin: 50% 0;
   background-color: #555;
 }
 
 .grad-tick--half {
   width: 2px;
-  height: 0.25em;
+  height: 0.5em;
 }
 
 .grad-tick--quarter {
   width: 2px;
-  height: 0.1em;
+  height: 0.25em;
 }
 
 .loader {
@@ -301,8 +301,8 @@
 
 .btn-grps {
   position: fixed;
-  bottom: 0;
-  right: 0;
+  top: 0.5rem;
+  right: 0.5rem;
 }
 
 .btn-volume {
@@ -315,7 +315,6 @@
   border: 4px solid;
   font-size: 1.5rem;
   font-weight: bold;
-  margin: 5px;
 }
 .btn-volume.active {
   color: tomato;
@@ -337,9 +336,6 @@ body {
 
 .help {
   border-top: 1px solid;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
 }
 
 .head {
@@ -351,4 +347,4 @@ h1 {
   text-transform: uppercase;
 }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=style1.css.map */
