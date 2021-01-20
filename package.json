@@ -1,7 +1,21 @@
 {
   "name": "mantis-dashboard",
   "version": "0.1.0",
+  "productName": "Mantis Dashboard App",
+  "main": "electron/main.js",
+  "homepage": "./",
   "private": true,
+  "build": {
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "publish": {
+      "provider": "github",
+      "repo": "my-electron-app",
+      "owner": "siddaiah"
+    }
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
@@ -12,10 +26,14 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set BROWSER=none && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start-electron": "set ELECTRON_START_URL=http://localhost:3000 && electron .",
+    "lin-build-electron": "mkdir build/src && cp -r electron/. build/electron && cp -r src/shared/. build/src/shared",
+    "win-build-electron": "mkdir build/src && robocopy electron build/electron  && robocopy src/shared build/src/shared",
+    "package": "electron-builder build --win -c.extraMetadata.main=build/electron/main.js --publish never"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +52,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "electron": "^11.2.0",
+    "electron-builder": "^22.9.1"
   }
 }
