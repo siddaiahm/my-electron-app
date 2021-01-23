@@ -1,27 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-import { channels } from '../shared/constants';
-import { useEffect, useState } from 'react';
-const { ipcRenderer } = window; 
+import "./assets/style/index.css";
+import { channels } from "../shared/constants";
+import React, { useState } from "react";
+import { BulbFilled } from "@ant-design/icons";
+import Footer from "./components/Footer";
+import Meter from "./components/Meter";
+const { ipcRenderer } = window;
 
 function App() {
-  let [appInfo,setAppInfo]=useState({});
+  const [isDark, setIsDark] = useState(false);
 
-  useEffect(()=>{
-    ipcRenderer.send(channels.APP_INFO);
-    ipcRenderer.on(channels.APP_INFO, (event, arg) => {
-      ipcRenderer.removeAllListeners(channels.APP_INFO);
-      const { appName, appVersion } = arg;
-      setAppInfo({ appName, appVersion });
-    });
-  },[])
+  const handleToggleDarkMode = async () => {
+    let isDark = await ipcRenderer.invoke(channels.TOGGLE_DARK_MODE);
+    setIsDark(isDark);
+  };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{appInfo.appName} version {appInfo.appVersion}</p>
-      </header>
+    <div className="app">
+      <div className="app-header">
+        <button onClick={handleToggleDarkMode} className="mode-btn">
+          <BulbFilled style={{ color: isDark ? "white" : "black" }} />
+        </button>
+      </div>
+      <div className="app-body">
+        <Meter />
+      </div>
+      <Footer />
     </div>
   );
 }

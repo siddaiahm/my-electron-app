@@ -1,0 +1,409 @@
+//home
+$color1: #5590a7;
+$color2: #1d698a;
+$color3: #08384e;
+$color5: #06131a;
+$color6: #88cfec;
+$color7: #57c7f5;
+$color8: #4cb8e7;
+$color9: #c5c9ca;
+$color10: #b1b1b1;
+//charge
+$color11: #579ebd;
+$color12: #3c7087;
+
+//navigation
+$color13: #20a6e4;
+$color14: #2ecf55;
+//soc-color
+$soc-color1: #5292ae;
+$soc-color2: #196587;
+//speed-color
+$speed-color1: #5c93a8;
+
+//inner-circle-color
+$inner-color1: #69c3e5;
+$inner-color2: #0fb4ff;
+$inner-color3: #047192;
+$inner-color4: #060f14;
+
+$ring-size: 1.5%;
+$ring-color: $color12;
+$border: 1px solid black;
+
+$circle-width: 300px;
+$circle-height: 300px;
+
+@mixin shadow($level: 2, $inset: false) {
+  @if $inset {
+    @if $level == 1 {
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12),
+        inset 0 1px 2px rgba(0, 0, 0, 0.24);
+    } @else if $level == 2 {
+      box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.16),
+        inset 0 3px 6px rgba(0, 0, 0, 0.23);
+    } @else if $level == 3 {
+      box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.19),
+        inset 0 6px 6px rgba(0, 0, 0, 0.23);
+    } @else if $level == 4 {
+      box-shadow: inset 0 14px 28px rgba(0, 0, 0, 0.25),
+        inset 0 10px 10px rgba(0, 0, 0, 0.22);
+    } @else if $level == 5 {
+      box-shadow: inset 0 19px 38px rgba(0, 0, 0, 0.3),
+        inset 0 15px 12px rgba(0, 0, 0, 0.22);
+    }
+  } @else {
+    @if $level == 1 {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    } @else if $level == 2 {
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    } @else if $level == 3 {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    } @else if $level == 4 {
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+    } @else if $level == 5 {
+      box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
+        0 15px 12px rgba(0, 0, 0, 0.22);
+    }
+  }
+}
+
+// @import url(https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@1,300&display=swap);
+// @import url(https://fonts.googleapis.com/css2?family=Exo:ital,wght@1,300&display=swap);
+
+@font-face {
+  font-family: myFirstFont;
+  src: url(FontsFree-Net-Geogtq-Rg.otf);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.btn {
+  padding: 5px;
+  font-size: 1.8rem;
+  &:focus {
+    outline-color: transparent;
+  }
+  background-color: transparent;
+  border: 0;
+  @extend .display-flex;
+}
+
+.mode-btn {
+  @extend .btn;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+}
+
+.display-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.app {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  font-family: myFirstFont;
+  font-style: italic;
+  letter-spacing: 2px;
+}
+.app-header {
+  @extend .display-flex;
+  flex: 1;
+}
+.app-body {
+  @extend .display-flex;
+  flex-direction: column;
+  flex: 6;
+}
+// Footer
+
+.footer {
+  border-top: 3px solid $color10;
+  width: 100%;
+  height: 12%;
+  @extend .display-flex;
+  justify-content: space-between;
+  flex: 1;
+}
+.footer-content {
+  height: 100%;
+  @extend .display-flex;
+  margin: 5px;
+}
+.footer-left {
+  @extend .footer-content;
+  justify-content: flex-start;
+  flex: 1;
+}
+.footer-right {
+  @extend .footer-content;
+  justify-content: flex-end;
+  flex: 1;
+}
+.footer-icon {
+  color: $color10;
+}
+.app-logo {
+  @extend .btn;
+  padding: 0;
+}
+.footer-center {
+  @extend .footer-content;
+  flex: 2;
+  justify-content: space-between;
+}
+.circle {
+  @extend .display-flex;
+  position: absolute;
+  width: $circle-width;
+  height: $circle-height;
+  border-radius: 50%;
+}
+.circleWrap {
+  position: absolute;
+  top: 0;
+  width: $circle-width/2;
+  height: $circle-height;
+}
+
+.circleLoader {
+  position: absolute;
+  top: 0;
+  border-radius: 1000px;
+  width: $circle-width/2;
+  height: $circle-height;
+}
+.inner-circle {
+  @extend .circle;
+  width: 190px;
+  height: 190px;
+  @include shadow(2, true);
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100% + $ring-size * 2;
+    left: -$ring-size;
+    top: -$ring-size;
+    bottom: -$ring-size;
+    border-radius: 50%;
+    background: $inner-color1;
+    @include shadow(2);
+  }
+}
+.circle1 {
+  @extend .circle;
+  overflow: hidden;
+  position: relative;
+  background-color: white;
+  transform: rotate(47deg);
+}
+
+.circle2 {
+  @extend .circleWrap;
+  left: 0;
+  background-color: $inner-color2;
+}
+
+.circle3 {
+  position: absolute;
+  left: 2.5px;
+  top: 2.5px;
+  width: $circle-width - 5;
+  height: $circle-height - 5;
+  border-radius: 50%;
+  background-color: white;
+  overflow: hidden;
+  @extend .display-flex;
+}
+.circle4 {
+  position: relative;
+  width: $circle-width - 10;
+  height: $circle-width - 10;
+  border-radius: 50%;
+  background-color: white;
+  overflow: hidden;
+}
+.circle5 {
+  @extend .circleLoader;
+  left: $circle-width/2;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background-color: $color2;
+}
+.circle6 {
+  position: absolute;
+  left: 42px;
+  top: 40px;
+  width: $circle-width - 90;
+  height: $circle-height - 90;
+  border-radius: 50%;
+  background-color: white;
+}
+.circle7 {
+  @extend .circleWrap;
+  overflow: hidden;
+  right: 0;
+  background-color: white;
+}
+.circle8 {
+  position: absolute;
+  left: -145px;
+  top: 5px;
+  width: $circle-width - 10;
+  height: $circle-height - 10;
+  border-radius: 50%;
+  background-color: $color9;
+  border: 4px solid $color10;
+  overflow: hidden;
+  @extend .display-flex;
+}
+.circle9 {
+  position: relative;
+  width: $circle-width - 70;
+  height: $circle-height - 70;
+  border-radius: 50%;
+  background-color: white;
+}
+.circle10 {
+  @extend .circleLoader;
+  left: -5px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  background-image: linear-gradient(to right, $soc-color1, $soc-color2);
+}
+.circle11 {
+  position: absolute;
+  left: -125px;
+  top: 32.5px;
+  width: $circle-width - 55;
+  height: $circle-height - 55;
+  border-radius: 50%;
+  background-color: white;
+}
+.circle12 {
+  @extend .circleWrap;
+  left: 15px;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  transform: rotate(30deg);
+}
+.circle13 {
+  transform: rotate(-80deg);
+  margin-top: 5px;
+  position: absolute;
+  top: 10px;
+  right: 0;
+  font-weight: bold;
+  letter-spacing: 0;
+}
+.circle14 {
+  @extend .circleWrap;
+  position: absolute;
+  left: 20px;
+  top: $circle-height - 50;
+  width: 40px;
+  height: 55px;
+  background-color: white;
+  @extend .display-flex;
+  align-items: flex-start;
+  transform: rotate(65deg);
+}
+.circle15 {
+  @extend .display-flex;
+  margin-top: 4px;
+  .icon1 {
+    font-size: 18px;
+  }
+  .icon2 {
+    position: absolute;
+    font-size: 12px;
+    margin-left: 1px;
+    margin-bottom: 2px;
+  }
+}
+.circle16 {
+  @extend .circleWrap;
+  left: 149px;
+  width: 30px;
+  height: $circle-height;
+  background-color: white;
+}
+.inner-circle1 {
+  @extend .circle;
+  width: 185px;
+  height: 185px;
+  background-color: white;
+}
+.inner-circle2 {
+  @extend .circle;
+  width: 180px;
+  height: 180px;
+  background-image: linear-gradient(
+    -47deg,
+    $inner-color2,
+    white,
+    $inner-color2
+  );
+}
+.inner-circle3 {
+  @extend .circle;
+  width: 165px;
+  height: 165px;
+  background-color: white;
+}
+.inner-circle4 {
+  @extend .circle;
+  width: 155px;
+  height: 155px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  transform: rotate(-47deg);
+  background-image: linear-gradient(to bottom, $inner-color3, $inner-color4);
+}
+.inner-center-line {
+  width: 100%;
+  height: 1px;
+  margin: 5px;
+  background-image: linear-gradient(
+    to right,
+    $inner-color4,
+    white,
+    $inner-color4
+  );
+}

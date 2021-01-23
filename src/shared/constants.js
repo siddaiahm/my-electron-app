@@ -1,5 +1,5 @@
 module.exports = {
     channels: {
-      APP_INFO: 'app_info',
+      TOGGLE_DARK_MODE: 'dark-mode:toggle',
     },
   };
