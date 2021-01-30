@@ -26,9 +26,11 @@
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.0",
     "antd": "^4.10.3",
+    "electron-reload": "^1.5.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
+    "react-svg": "^11.2.3",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -40,7 +42,7 @@
     "start-electron-win": "set ELECTRON_START_URL=http://localhost:3000 && electron .",
     "start-electron-lin": "export ELECTRON_START_URL=http://localhost:3000 && electron .",
     "lin-build-electron": "mkdir build/src && cp -r electron/. build/electron && cp -r src/shared/. build/src/shared",
-    "win-build-electron": "mkdir build/src && robocopy electron build/electron  && robocopy src/shared build/src/shared",
+    "win-build-electron": "mkdir build/src && robocopy electron/. build/electron  && robocopy src/shared/. build/src/shared",
     "package": "electron-builder build -c.extraMetadata.main=build/electron/main.js --publish never"
   },
   "eslintConfig": {
@@ -64,7 +66,6 @@
   "devDependencies": {
     "electron": "^11.2.0",
     "electron-builder": "^22.9.1",
-    "electron-reload": "^1.5.0",
     "sass": "^1.32.5"
   }
 }

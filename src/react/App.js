@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import { BulbFilled } from "@ant-design/icons";
 import Footer from "./components/Footer";
 import Meter from "./components/Meter";
+// import Test from "./components/test1";
+// import Charge from "./components/charge";
 const { ipcRenderer } = window;
 
 function App() {
@@ -22,7 +24,9 @@ function App() {
         </button>
       </div>
       <div className="app-body">
+        {/* <Charge /> */}
         <Meter />
+        {/* <Test /> */}
       </div>
       <Footer />
     </div>

@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-import { ReactSVG } from "react-svg";
-import svg from "./../assets/img/speedometer.svg";
-
 function Meter() {
   const [meterValue, setMeterValue] = useState(0);
-  const [chargeValue, setChargeValue] = useState(null);
-  const [isReady, setIsReady] = useState(false);
+  const [chargeValue, setChargeValue] = useState(0);
   const [totalDistance, setTotalDistance] = useState(0);
   const [tripDistance, setTripDistance] = useState(4);
 
@@ -25,6 +21,11 @@ function Meter() {
     let percent = (angle / 180) * 100;
     return percent;
   };
+
+  let leftTransformerDegree = "0deg";
+  leftTransformerDegree = value2percent(meterValue) * 1.8 + "deg";
+  let rightTransformerDegree = "180deg";
+  rightTransformerDegree = -(17 * 1.8 + chargeValue * 1.25) + "deg";
 
   const handleInit = () => {
     document.onkeydown = keyDown;
@@ -98,9 +99,10 @@ function Meter() {
 
     // BATTERY CONFIG
 
-    let soc = 80;
+    let soc = 90;
     let distanceTraveled = 0;
     // Helper functions
+
     setChargeValue(soc);
 
     let torqueByRpm = function (rpm) {
@@ -191,40 +193,66 @@ function Meter() {
   };
 
   useEffect(() => {
-    if (isReady) {
-      handleInit();
-    }
-  }, [isReady]);
-
-  useEffect(() => {
-    return () => setIsReady(false);
+    handleInit();
   }, []);
 
   return (
-    <div style={{ width: 300, height: 300 }}>
-      <ReactSVG
-        src={svg}
-        renumerateIRIElements={false}
-        afterInjection={() => {
-          setIsReady(true);
-          let charge = document.getElementById("chargeMask");
-          charge.setAttribute(
-            "transform",
-            `rotate(${121 * (100 - chargeValue) * 0.01})`
-          );
-          charge.setAttribute("transform-origin", "50% 50%");
-          let speed = document.getElementById("speedMask");
-          speed.setAttribute(
-            "transform",
-            `rotate(-${170 * (100 - value2percent(meterValue)) * 0.01})`
-          );
-          speed.setAttribute("transform-origin", "50% 50%");
-          let speedText = document.getElementById("speedText");
-          speedText.textContent = meterValue;
-          let chargeText = document.getElementById("chargeText");
-          chargeText.textContent = chargeValue + "%";
-        }}
-      />
+    <>
+      <div className="circle1">
+        <div className="circle2">
+          <div className="circle3">
+            <div className="circle4">
+              <div
+                className="circle5"
+                style={{
+                  transform:
+                    "translateX(-50%) rotate(" +
+                    leftTransformerDegree +
+                    ") translateX(50%)",
+                }}
+              ></div>
+              <div className="circle6"></div>
+            </div>
+          </div>
+        </div>
+        <div className="circle7">
+          <div className="circle8">
+            <div className="circle9" />
+            <div
+              className="circle10"
+              style={{
+                transform: `translateX(50%) rotate(${rightTransformerDegree}) translateX(-50%)`,
+              }}
+            ></div>
+          </div>
+          <div className="circle11" />
+          <div className="circle12">
+            <div className="circle13">{chargeValue + "%"}</div>
+          </div>
+          <div className="circle14">
+            <div className="circle15">
+              <i class="fa fa-rotate-180 fa-battery-0 icon1"></i>
+              <i class="fa fa-rotate-270 fa-bolt icon2"></i>
+            </div>
+          </div>
+        </div>
+        <div className="circle16" />
+        <div className="inner-circle">
+          <div className="inner-circle1">
+            <div className="inner-circle2">
+              <div className="inner-circle3">
+                <div className="inner-circle4">
+                  <i className="inner-text1">{meterValue}</i>
+                  <i className="inner-text2">KM/H</i>
+                  <div className="inner-center-line" />
+                  <i className="inner-text3">170</i>
+                  <i className="inner-text2">KM LEFT</i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="meter-info">
         <div className="odo-meter">
           <i>Odometer</i>
@@ -235,7 +263,7 @@ function Meter() {
           <i>{tripDistance} km</i>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
