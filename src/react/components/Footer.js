@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { BranchesOutlined, SettingFilled } from "@ant-design/icons";
 import logo from "../assets/img/logo.png";
 function Footer() {
   const [date, setDate] = useState(new Date());
@@ -44,7 +43,6 @@ function Footer() {
         <button className="btn" onClick={() => handleNavigation("setting")}>
           <i
             className={"fa fa-cog footer-icon " + (iconStyle["setting"] || "")}
-            // style={iconStyle["setting"] || {}}
           />
         </button>
       </div>

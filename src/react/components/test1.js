@@ -6,19 +6,15 @@ import svg from "./../assets/img/speedometer2.svg";
 
 function Test() {
   return (
-    <div style={{ width: 400, height: 400 }}>
+    <div style={{ width: 200, height: 300 }}>
       <ReactSVG
         src={svg}
         renumerateIRIElements={false}
         afterInjection={() => {
-          let left = document.getElementById("speedMask");
-          left.style.transform = "rotate(-172deg)";
-          left.style.transformOrigin = "50% 50%";
-          //   let right = document.getElementById("path36");
-          //   right.style.transform = "rotate(10deg)";
-          //   right.style.transformOrigin = "46% 41%";
-          //   transform-origin: 50% 50%;
-          //           transform: rotate(180deg);
+          let left = document.getElementById("leftChargeMask");
+          let right = document.getElementById("rightChargeMask");
+          let chargeText = document.getElementById("chargeText");
+          let timeText = document.getElementById("timeText");
         }}
       />
     </div>

@@ -2,7 +2,7 @@ const { app, BrowserWindow, ipcMain, nativeTheme } = require("electron");
 const { channels } = require("../src/shared/constants");
 const path = require("path");
 require("electron-reload");
-
+let soc = 80;
 let mainWindow;
 function createWindow() {
   const startUrl =
@@ -30,6 +30,10 @@ ipcMain.handle(channels.TOGGLE_DARK_MODE, () => {
     nativeTheme.themeSource = "dark";
   }
   return nativeTheme.shouldUseDarkColors;
+});
+
+ipcMain.handle(channels.GET_SOC, () => {
+  return soc;
 });
 
 app.on("ready", createWindow);

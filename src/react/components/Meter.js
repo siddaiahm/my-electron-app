@@ -3,9 +3,8 @@ import React, { useEffect, useState } from "react";
 import { ReactSVG } from "react-svg";
 import svg from "./../assets/img/speedometer.svg";
 
-function Meter() {
+function Meter({ soc, updateSoc }) {
   const [meterValue, setMeterValue] = useState(0);
-  const [chargeValue, setChargeValue] = useState(null);
   const [isReady, setIsReady] = useState(false);
   const [totalDistance, setTotalDistance] = useState(0);
   const [tripDistance, setTripDistance] = useState(4);
@@ -98,10 +97,8 @@ function Meter() {
 
     // BATTERY CONFIG
 
-    let soc = 80;
     let distanceTraveled = 0;
     // Helper functions
-    setChargeValue(soc);
 
     let torqueByRpm = function (rpm) {
       let torque = torqueMin + (rpm / rpmMax) * (torqueMax - torqueMin);
@@ -173,12 +170,12 @@ function Meter() {
         gearDown();
       }
 
-      //update charge GUI
+      //update soc GUI
       if (acceleration > 0) {
         let reducedSoc = soc - (acceleration * 0.001).toFixed(3);
         if (reducedSoc >= 0) {
           soc = reducedSoc;
-          setChargeValue(Math.round(soc));
+          updateSoc(Math.round(soc));
         }
       }
 
@@ -207,22 +204,22 @@ function Meter() {
         renumerateIRIElements={false}
         afterInjection={() => {
           setIsReady(true);
-          let charge = document.getElementById("chargeMask");
-          charge.setAttribute(
+          let socMask = document.getElementById("socMask");
+          socMask.setAttribute(
             "transform",
-            `rotate(${121 * (100 - chargeValue) * 0.01})`
+            `rotate(${121 * (100 - soc) * 0.01})`
           );
-          charge.setAttribute("transform-origin", "50% 50%");
-          let speed = document.getElementById("speedMask");
-          speed.setAttribute(
+          socMask.setAttribute("transform-origin", "50% 50%");
+          let speedMask = document.getElementById("speedMask");
+          speedMask.setAttribute(
             "transform",
             `rotate(-${170 * (100 - value2percent(meterValue)) * 0.01})`
           );
-          speed.setAttribute("transform-origin", "50% 50%");
+          speedMask.setAttribute("transform-origin", "50% 50%");
           let speedText = document.getElementById("speedText");
           speedText.textContent = meterValue;
-          let chargeText = document.getElementById("chargeText");
-          chargeText.textContent = chargeValue + "%";
+          let socText = document.getElementById("socText");
+          socText.textContent = soc + "%";
         }}
       />
       <div className="meter-info">

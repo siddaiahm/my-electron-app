@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="100%"
+   height="100%"
+   viewBox="0 0 150 250.00001"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
+   sodipodi:docname="charge.svg">
+  <defs
+     id="defs2">
+    <inkscape:path-effect
+       effect="powermask"
+       id="path-effect867"
+       is_visible="true"
+       lpeversion="1"
+       uri="#mask-powermask-path-effect867"
+       invert="false"
+       hide_mask="false"
+       background="true"
+       background_color="#ffffffff" />
+    <inkscape:path-effect
+       effect="powermask"
+       id="path-effect856"
+       is_visible="true"
+       lpeversion="1"
+       uri="#mask-powermask-path-effect856"
+       invert="false"
+       hide_mask="false"
+       background="true"
+       background_color="#ffffffff" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0.005596622 : 184.84948 : 1"
+       inkscape:vp_y="0 : 15.118111 : 0"
+       inkscape:vp_z="0.99624832 : 184.84967 : 1"
+       inkscape:persp3d-origin="0.66666667 : 184.18751 : 1"
+       id="perspective833" />
+    <mask
+       maskUnits="userSpaceOnUse"
+       id="mask855">
+      <path
+         id="leftChargeMask"
+         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke-width:0;stroke-linecap:square;paint-order:stroke fill markers"
+         d="M 0.52734932,1.2334129 H 75.680078 V 249.10564 H 0.52734932 Z"
+         sodipodi:nodetypes="ccccc"
+         inkscape:label="leftChargeMask" />
+    </mask>
+    <mask
+       maskUnits="userSpaceOnUse"
+       id="mask859">
+      <path
+         id="rightChargeMask"
+         style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke-width:0;stroke-linecap:square;paint-order:stroke fill markers"
+         d="M 74.998999,1.8 H 149.999 V 250.5 H 74.998999 Z"
+         sodipodi:nodetypes="ccccc"
+         inkscape:label="rightChargeMask" />
+    </mask>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2"
+     inkscape:cx="107.88418"
+     inkscape:cy="102.41889"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     units="px"
+     inkscape:snap-nodes="false"
+     inkscape:object-nodes="false"
+     inkscape:snap-midpoints="false"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-center="false"
+     inkscape:snap-bbox="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:pagecheckerboard="true" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path927"
+       style="fill:#bdbec0;fill-opacity:1;fill-rule:evenodd;stroke-width:0;stroke-linecap:square;paint-order:stroke fill markers"
+       inkscape:transform-center-x="-0.33912382"
+       inkscape:transform-center-y="21.556737"
+       d="M 0.99999999,0.99999999 74.825201,250 74.999999,78.999999 61.465693,81.19754 Z"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       id="path930"
+       style="display:inline;fill:#e7e8e9;fill-opacity:1;fill-rule:evenodd;stroke-width:0;stroke-linecap:square;paint-order:stroke fill markers"
+       inkscape:transform-center-x="0.37340483"
+       inkscape:transform-center-y="21.569731"
+       d="M 149,0.99999999 88.176918,81.19754 74.998999,78.999999 74.821307,250 Z"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       id="path955"
+       style="display:inline;opacity:1;fill:#939598;fill-opacity:1;fill-rule:evenodd;stroke-width:0;stroke-linecap:square;paint-order:stroke fill markers"
+       d="M 74.821304,250 0.99999999,0.99999999 74.998999,115.73615 149,0.99999999 Z"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       id="path958"
+       style="display:inline;opacity:1;fill:#d1d2d4;fill-opacity:1;fill-rule:evenodd;stroke-width:0;stroke-linecap:square;paint-order:stroke fill markers"
+       inkscape:transform-center-x="0.023294498"
+       inkscape:transform-center-y="25.027056"
+       d="M 74.821303,250 74.998999,118 147.58578,5.5909902 Z"
+       sodipodi:nodetypes="cccc" />
+    <path
+       id="path961"
+       style="display:inline;opacity:1;fill:#808184;fill-opacity:1;fill-rule:evenodd;stroke-width:0;stroke-linecap:square;paint-order:stroke fill markers"
+       inkscape:transform-center-x="3.1755142"
+       inkscape:transform-center-y="2.7477851"
+       d="m 45.590828,160.62944 -30.64759,30.25752 22.95326,-56.4807 z"
+       sodipodi:nodetypes="cccc" />
+    <path
+       id="path966"
+       style="display:inline;opacity:1;fill:#808184;fill-opacity:1;fill-rule:evenodd;stroke-width:0;stroke-linecap:square;paint-order:stroke fill markers"
+       inkscape:transform-center-x="-3.1755127"
+       inkscape:transform-center-y="2.7477851"
+       d="m 104.35117,159.69471 30.23842,31.19225 -22.84348,-56.4807 z"
+       sodipodi:nodetypes="cccc" />
+    <path
+       id="rightCharge"
+       style="display:inline;fill:#579ebd;fill-opacity:1;fill-rule:evenodd;stroke-width:0;stroke-linecap:square;paint-order:stroke fill markers"
+       inkscape:transform-center-x="0.37340483"
+       inkscape:transform-center-y="21.569732"
+       d="M 149,0.99999999 88.176918,81.19754 74.998999,78.999999 74.821302,250 Z M 111.74611,134.40626 l -7.3951,25.28749 30.2392,31.19321 z"
+       inkscape:label="rightCharge"
+       sodipodi:nodetypes="ccccccccc"
+       mask="url(#mask859)" />
+    <path
+       id="leftCharge"
+       style="display:inline;fill:#3d7087;fill-opacity:1;fill-rule:evenodd;stroke-width:0;stroke-linecap:square;paint-order:stroke fill markers"
+       inkscape:transform-center-x="-0.33912402"
+       inkscape:transform-center-y="21.556747"
+       d="M 1.0283675,1.7291574 74.999695,248.60991 75.179059,79.065295 61.617188,81.244141 Z M 38,134 15,190 45.710938,160 Z"
+       transform="matrix(0.99796775,0,0,1.0085841,-0.02627762,-0.74400067)"
+       inkscape:label="leftCharge"
+       sodipodi:nodetypes="ccccccccc"
+       mask="url(#mask855)" />
+    <text
+       xml:space="preserve"
+       style="font-size:7.58371px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;stroke-width:3.79186"
+       x="74.979385"
+       y="7.4999971"
+       id="text861"
+       inkscape:label="chargeText"
+       transform="scale(0.99472313,1.0053049)"><tspan
+         sodipodi:role="line"
+         id="chargeText"
+         x="74.979385"
+         y="7.4999971"
+         style="font-size:7.58371px;text-align:center;text-anchor:middle;stroke-width:3.79186"
+         dy="5.1948423">100%</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:7.58371px;line-height:1.25;font-family:sans-serif;stroke-width:3.79186"
+       x="75.227486"
+       y="18.028654"
+       id="text865"
+       transform="scale(0.99472313,1.0053049)"><tspan
+         sodipodi:role="line"
+         id="tspan863"
+         x="75.227486"
+         y="18.028654"
+         dy="4.7398195"
+         style="text-align:center;text-anchor:middle;stroke-width:3.79186">CHARGED</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:7.58371px;line-height:1.25;font-family:sans-serif;stroke-width:3.79186"
+       x="75.362686"
+       y="31.791534"
+       id="text877"
+       inkscape:label="timeText"
+       transform="scale(0.9947231,1.0053049)"><tspan
+         sodipodi:role="line"
+         id="timeText"
+         x="75.362686"
+         y="31.791534"
+         style="font-size:7.58371px;text-align:center;text-anchor:middle;stroke-width:3.79186"
+         dy="6.8400002">0 HRS</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:7.58371px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;stroke-width:3.79186"
+       x="75.429291"
+       y="43.835659"
+       id="text885"
+       transform="scale(0.99472313,1.0053049)"><tspan
+         sodipodi:role="line"
+         id="tspan883"
+         x="75.429291"
+         y="43.835659"
+         style="font-size:7.58371px;text-align:center;text-anchor:middle;stroke-width:3.79186"
+         dy="5.308598">TO FULL CHARGE</tspan></text>
+  </g>
+</svg>
