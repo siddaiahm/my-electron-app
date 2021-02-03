@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import logo from "../assets/img/logo.png";
-function Footer() {
+
+function Footer({ currentScreen, navigateScreen }) {
   const [date, setDate] = useState(new Date());
-  const [iconStyle, setIconStyle] = useState({});
 
   const handleDate = () => {
     (function loop() {
@@ -14,10 +14,6 @@ function Footer() {
     handleDate();
   }, []);
 
-  const handleNavigation = (icon) => {
-    setIconStyle({ [icon]: "active" });
-  };
-
   return (
     <div className="footer">
       <div className="footer-left">
@@ -28,10 +24,15 @@ function Footer() {
         })}
       </div>
       <div className="footer-center">
-        <button className="btn" onClick={() => handleNavigation("nav")}>
-          <i className={"fa fa-map footer-icon " + (iconStyle["nav"] || "")} />
+        <button className="btn" onClick={() => navigateScreen("NAVI")}>
+          <i
+            className={
+              "fa fa-map footer-icon " +
+              (currentScreen === "NAVI" ? "active" : "")
+            }
+          />
         </button>
-        <button className="app-logo" onClick={() => handleNavigation({})}>
+        <button className="app-logo" onClick={() => navigateScreen("HOME")}>
           <img
             src={logo}
             style={{
@@ -40,9 +41,12 @@ function Footer() {
             }}
           />
         </button>
-        <button className="btn" onClick={() => handleNavigation("setting")}>
+        <button className="btn" onClick={() => navigateScreen("SETT")}>
           <i
-            className={"fa fa-cog footer-icon " + (iconStyle["setting"] || "")}
+            className={
+              "fa fa-cog footer-icon " +
+              (currentScreen === "SETT" ? "active" : "")
+            }
           />
         </button>
       </div>
