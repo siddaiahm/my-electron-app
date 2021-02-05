@@ -13,9 +13,92 @@ function App() {
   const [isDark, setIsDark] = useState(false);
   const [data, setData] = useState({});
   const [isReady, setIsReady] = useState(false);
-  const [currentScreenIndex, setCurrentScreenIndex] = useState(0);
+  const [currentScreenIndex, setCurrentScreenIndex] = useState(2);
+  const [currentTabIndex, setCurrentTabIndex] = useState(0);
+  const [currentTab, setCurrentTab] = useState(0);
   let screenIndexRef = useRef();
   screenIndexRef.current = currentScreenIndex;
+  let tabIndexRef = useRef();
+  tabIndexRef.current = currentTabIndex;
+  let dataRef = useRef();
+  dataRef.current = data;
+  let currentTabRef = useRef();
+  currentTabRef.current = currentTab;
+
+  const handleToggleDarkMode = async () => {
+    let isDark = await ipcRenderer.invoke(channels.TOGGLE_DARK_MODE);
+    setIsDark(isDark);
+  };
+  let Test = ({ txt }) => <div>{txt}</div>;
+  const TABS = [
+    {
+      name: "Settings",
+      tabArray: [
+        { id: 0, name: "Pair", component: <Test txt="Pair component" /> },
+        {
+          id: 1,
+          name: "Day/Night",
+          mode: 0,
+          component: <Test txt={(isDark ? "Night" : "Day") + " Mode"} />,
+          onOkKey: handleToggleDarkMode,
+        },
+        {
+          id: 2,
+          name: "Record Ride",
+          component: <Test txt="Record ride component" />,
+        },
+        {
+          id: 3,
+          name: "Sync To App",
+          component: <Test txt="Sync to app component" />,
+        },
+        {
+          id: 4,
+          name: "Date And Time",
+          component: <Test txt="Date and Time component" />,
+        },
+        {
+          id: 5,
+          name: "Ride Efficiency",
+          component: <Test txt="Ride Efficiency component" />,
+          onOkKey: () => {
+            setCurrentTabIndex(0);
+            setCurrentTab(1);
+          },
+        },
+      ],
+    },
+    {
+      name: "Your ride this week",
+      tabArray: [
+        {
+          id: 0,
+          name: "Average Power",
+          component: <Test txt="Average Power component" />,
+        },
+        {
+          id: 1,
+          name: "Average Speed",
+          component: <Test txt="Average Speed component" />,
+        },
+        {
+          id: 2,
+          name: "Distance",
+          component: <Test txt="Distance component" />,
+        },
+        {
+          id: 3,
+          name: "Top Speed",
+          component: <Test txt="Top Speed component" />,
+        },
+        {
+          id: 4,
+          name: "Ride Duration",
+          component: <Test txt="Ride Duration component" />,
+        },
+      ],
+    },
+  ];
 
   const SCREENS = [
     {
@@ -26,7 +109,16 @@ function App() {
       name: "NAVI",
       screen: <Navigation data={data} />,
     },
-    { name: "SETT", screen: <Settings data={data} /> },
+    {
+      name: "SETT",
+      screen: (
+        <Settings
+          data={data}
+          tabInfo={TABS[currentTab]}
+          currentTabIndex={currentTabIndex}
+        />
+      ),
+    },
   ];
 
   const updateSoc = (newSoc) => {
@@ -44,10 +136,7 @@ function App() {
   };
 
   const handleInit = (data) => {
-    document.onkeyup = keyUp;
-    document.onkeydown = keyDown;
-
-    function keyDown(e) {
+    const keyDown = (e) => {
       e = e || window.event;
       handleKeyPress(e);
       if (e.keyCode == "38") {
@@ -57,8 +146,8 @@ function App() {
         // down arrow
         isBraking = true;
       }
-    }
-    function keyUp(e) {
+    };
+    const keyUp = (e) => {
       e = e || window.event;
       if (e.keyCode == "38") {
         // up arrow
@@ -67,8 +156,9 @@ function App() {
         // down arrow
         isBraking = false;
       }
-    }
-
+    };
+    document.onkeyup = keyUp;
+    document.onkeydown = keyDown;
     function gearUp() {
       if (gear < gears.length - 1) {
         gear++;
@@ -207,29 +297,84 @@ function App() {
   const handleKeyPress = (e) => {
     const LEFT_KEY = 37;
     const RIGHT_KEY = 39;
-    console.log("keyPressed", e);
+    const OK_KEY = 13;
     switch (e.keyCode) {
+      case OK_KEY: {
+        ipcRenderer.send(events.DASHBOARD_CONTROL_BUTTON_OK);
+        break;
+      }
       case LEFT_KEY: {
-        ipcRenderer.send(events.SWITCH_SCREEN, -1);
+        ipcRenderer.send(events.DASHBOARD_CONTROL_BUTTON_LEFT);
         break;
       }
       case RIGHT_KEY: {
-        ipcRenderer.send(events.SWITCH_SCREEN, 1);
+        ipcRenderer.send(events.DASHBOARD_CONTROL_BUTTON_RIGHT);
         break;
       }
       default:
     }
   };
 
-  const handleToggleDarkMode = async () => {
-    let isDark = await ipcRenderer.invoke(channels.TOGGLE_DARK_MODE);
-    setIsDark(isDark);
+  const handleRightButton = () => {
+    let eventName;
+    let data = dataRef.current;
+    if (data.SWITCH_SCREEN) {
+      eventName = events.SWITCH_SCREEN;
+    } else {
+      eventName = events.SWITCH_TAB;
+    }
+    ipcRenderer.send(eventName, 1);
+  };
+
+  const handleLeftButton = () => {
+    let eventName;
+    let data = dataRef.current;
+    if (data.SWITCH_SCREEN) {
+      eventName = events.SWITCH_SCREEN;
+    } else {
+      eventName = events.SWITCH_TAB;
+    }
+    if (
+      SCREENS[currentScreenIndex].name === "SETT" &&
+      !data.SWITCH_SCREEN &&
+      tabIndexRef.current === 0
+    ) {
+      if (currentTabRef.current === 0) {
+        ipcRenderer.send(events.UPDATE_KILL_SWITCH_STATUS, 1);
+      } else {
+        setCurrentTab(currentTabRef.current - 1);
+      }
+    }
+    ipcRenderer.send(eventName, -1);
+  };
+
+  const handleOkButton = () => {
+    let data = dataRef.current;
+    if (SCREENS[screenIndexRef.current].name === "SETT" && data.SWITCH_SCREEN) {
+      ipcRenderer.send(events.UPDATE_KILL_SWITCH_STATUS, 0);
+    }
+    if (
+      TABS[currentTabRef.current].tabArray[tabIndexRef.current].onOkKey !==
+      undefined
+    ) {
+      TABS[currentTabRef.current].tabArray[tabIndexRef.current].onOkKey();
+    }
   };
 
   const handleSwitchScreen = (ev, index) => {
     let switchScrenIndex = screenIndexRef.current + index;
     if (switchScrenIndex >= 0 && switchScrenIndex < SCREENS.length) {
       setCurrentScreenIndex(switchScrenIndex);
+    }
+  };
+
+  const handleSwitchTab = (ev, index) => {
+    let switchTabIndex = tabIndexRef.current + index;
+    if (
+      switchTabIndex >= 0 &&
+      switchTabIndex < TABS[currentTab].tabArray.length
+    ) {
+      setCurrentTabIndex(switchTabIndex);
     }
   };
 
@@ -242,18 +387,23 @@ function App() {
     ipcRenderer.send(events.TOGGLE_CHARGING_STATUS);
   };
 
+  const fetchData = async () => {
+    let data = await ipcRenderer.invoke(channels.GET_DATA);
+    setData(data);
+    setIsReady(true);
+    handleInit(data);
+  };
   useEffect(() => {
-    async function fetchData() {
-      let data = await ipcRenderer.invoke(channels.GET_DATA);
-      setData(data);
-      setIsReady(true);
-      handleInit(data);
-    }
+    setIsReady(false);
     fetchData();
     ipcRenderer.on(channels.DATA_UPDATED, (e, data) => {
       setData(data);
     });
     ipcRenderer.on(channels.SWITCH_SCREEN, handleSwitchScreen);
+    ipcRenderer.on(channels.SWITCH_TAB, handleSwitchTab);
+    ipcRenderer.on(channels.DASHBOARD_CONTROL_BUTTON_LEFT, handleLeftButton);
+    ipcRenderer.on(channels.DASHBOARD_CONTROL_BUTTON_RIGHT, handleRightButton);
+    ipcRenderer.on(channels.DASHBOARD_CONTROL_BUTTON_OK, handleOkButton);
   }, []);
 
   return (

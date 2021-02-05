@@ -36,10 +36,31 @@ ipcMain.on(events.SWITCH_SCREEN, (ev, index) => {
   ev.reply(channels.SWITCH_SCREEN, index);
 });
 
+ipcMain.on(events.SWITCH_TAB, (ev, index) => {
+  ev.reply(channels.SWITCH_TAB, index);
+});
+
+ipcMain.on(events.UPDATE_KILL_SWITCH_STATUS, (ev, state) => {
+  vehicle.setSwitchScreenState(state);
+  ev.reply(channels.DATA_UPDATED, vehicle.getData());
+});
+
 ipcMain.on(events.TOGGLE_CHARGING_STATUS, (ev) => {
   let currentState = vehicle.data.CHARGING_STATUS;
   vehicle.setChargeState(!currentState, (soc) => {
     ev.reply(channels.DATA_UPDATED, vehicle.getData());
   });
   ev.reply(channels.DATA_UPDATED, vehicle.getData());
+});
+
+ipcMain.on(events.DASHBOARD_CONTROL_BUTTON_LEFT, (ev) => {
+  ev.reply(channels.DASHBOARD_CONTROL_BUTTON_LEFT);
+});
+
+ipcMain.on(events.DASHBOARD_CONTROL_BUTTON_RIGHT, (ev) => {
+  ev.reply(channels.DASHBOARD_CONTROL_BUTTON_RIGHT);
+});
+
+ipcMain.on(events.DASHBOARD_CONTROL_BUTTON_OK, (ev) => {
+  ev.reply(channels.DASHBOARD_CONTROL_BUTTON_OK);
 });

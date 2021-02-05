@@ -666,7 +666,8 @@
        id="soc"
        clip-path="none"
        mask="url(#mask939)"
-       style="display:inline;opacity:1;fill:url(#linearGradient1460);fill-opacity:1;fill-rule:evenodd;stroke-width:2.35987;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;paint-order:stroke fill markers"
+       style="display:inline;opacity:1;fill-opacity:1;fill-rule:evenodd;stroke-width:2.35987;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;paint-order:stroke fill markers"
+       fill="url(#linearGradient1460)"
        inkscape:label="soc"
        d="m 290.17969,127.01953 -27.02735,4.37109 0.32422,-0.0312 A 126.63816,130.10667 0 0 1 210.18945,250.33594 126.63816,130.10667 0 0 1 83.679688,261.6582 l -6.279297,10.59571 a 141.94648,142.65788 0 0 0 152.386719,-4.55079 141.94648,142.65788 0 0 0 60.39258,-140.68359 z" />
     <path

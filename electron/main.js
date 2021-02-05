@@ -1,6 +1,6 @@
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
-process.env.NODE_ENV === "development" ? require("electron-reload") : null;
+require("electron-reload");
 let mainWindow;
 let splash;
 function createWindow() {

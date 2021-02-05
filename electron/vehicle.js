@@ -27,8 +27,7 @@ function Vehicle() {
     BRIGHTNESS_CONTROL: 0,
     INDICATOR_FLASHES_PER_MINUTE: 0.0,
     DISPLAY_ON_OFF: 1,
-    SWITCH_SCREEN_LEFT: 0,
-    SWITCH_SCREEN_RIGHT: 1,
+    SWITCH_SCREEN: 1,
     DIAGNOSTIC_CODE: 0,
   };
   this.interVal = null;
@@ -101,6 +100,10 @@ function Vehicle() {
   };
   this.getData = () => {
     return this.data;
+  };
+
+  this.setSwitchScreenState = (newSwitchScreenState) => {
+    this.data.SWITCH_SCREEN = newSwitchScreenState;
   };
 }
 

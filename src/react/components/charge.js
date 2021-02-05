@@ -11,19 +11,21 @@ function Charge({ SOC }) {
         src={svg}
         renumerateIRIElements={false}
         loading={() => <span>Loading...</span>}
-        afterInjection={(error, _) => {
+        afterInjection={(error, svg) => {
           if (error) {
             return;
           }
           let leftMask = document.getElementById("leftChargeMask");
           let rightMask = document.getElementById("rightChargeMask");
           let chargeText = document.getElementById("chargeText");
-          chargeText.textContent = SOC + "%";
-          let translateY = `translate(0,${250 * (100 - SOC) * 0.01})`;
-          leftMask.setAttribute("transform", translateY);
-          rightMask.setAttribute("transform", translateY);
           let timeText = document.getElementById("timeText");
-          timeText.textContent = duration(SOC);
+          if (leftMask && rightMask && chargeText && timeText) {
+            chargeText.textContent = SOC + "%";
+            let translateY = `translate(0,${250 * (100 - SOC) * 0.01})`;
+            leftMask.setAttribute("transform", translateY);
+            rightMask.setAttribute("transform", translateY);
+            timeText.textContent = duration(SOC);
+          }
         }}
       />
     </div>

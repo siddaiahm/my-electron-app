@@ -20,32 +20,41 @@ function Meter({ SOC, SPEED, ODO_METER, TRIP_METER }) {
   };
 
   return (
-    <div style={{ width: 300, height: 300 }}>
+    <div>
       <ReactSVG
         src={svg}
         renumerateIRIElements={false}
         loading={() => <span>Loading...</span>}
-        afterInjection={(error, _) => {
+        afterInjection={(error, svg) => {
           if (error) {
             return;
           }
           let socMask = document.getElementById("socMask");
-          socMask.setAttribute(
-            "transform",
-            `rotate(${125 * (100 - SOC) * 0.01})`
-          );
-          socMask.setAttribute("transform-origin", "50% 50%");
           let speedMask = document.getElementById("speedMask");
-          let meterValue = Math.round(SPEED);
-          speedMask.setAttribute(
-            "transform",
-            `rotate(-${170 * (100 - value2percent(meterValue)) * 0.01})`
-          );
-          speedMask.setAttribute("transform-origin", "50% 50%");
           let speedText = document.getElementById("speedText");
-          speedText.textContent = meterValue;
           let socText = document.getElementById("socText");
-          socText.textContent = SOC + "%";
+          let socElm = document.getElementById("soc");
+          if (socMask && speedMask && speedText && socText && socElm) {
+            socMask.setAttribute(
+              "transform",
+              `rotate(${125 * (100 - SOC) * 0.01})`
+            );
+            socMask.setAttribute("transform-origin", "50% 50%");
+            let meterValue = Math.round(SPEED);
+            speedMask.setAttribute(
+              "transform",
+              `rotate(-${170 * (100 - value2percent(meterValue)) * 0.01})`
+            );
+            speedMask.setAttribute("transform-origin", "50% 50%");
+            speedText.textContent = meterValue;
+            socText.textContent = SOC + "%";
+
+            if (SOC < 30) {
+              socElm.setAttribute("fill", "red");
+            } else {
+              socElm.setAttribute("fill", "url(#linearGradient1460)");
+            }
+          }
         }}
       />
       <div className="meter-info">

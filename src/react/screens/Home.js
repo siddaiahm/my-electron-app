@@ -4,7 +4,9 @@ import Charge from "../components/charge";
 
 function Home({ data }) {
   return (
-    <>{data.CHARGING_STATUS ? <Charge {...data} /> : <Meter {...data} />}</>
+    <div className="home-screen">
+      {data.CHARGING_STATUS ? <Charge {...data} /> : <Meter {...data} />}
+    </div>
   );
 }
 
