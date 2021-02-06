@@ -2,7 +2,7 @@ import React from "react";
 import { ReactSVG } from "react-svg";
 import svg from "./../assets/img/speedometer.svg";
 
-function Meter({ SOC, SPEED, ODO_METER, TRIP_METER }) {
+function Meter({ SOC, SPEED, ODO_METER, TRIP_METER, style }) {
   let config = {
     valueMin: 0,
     valueMax: 220,
@@ -20,7 +20,7 @@ function Meter({ SOC, SPEED, ODO_METER, TRIP_METER }) {
   };
 
   return (
-    <div>
+    <div style={style}>
       <ReactSVG
         src={svg}
         renumerateIRIElements={false}

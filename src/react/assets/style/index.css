@@ -6,15 +6,6 @@
   box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.mode-color {
-  background-color: white;
-}
-
 .btn, .app-logo, .tab-btn button, .mode-btn {
   padding: 5px;
   font-size: 1.8rem;
@@ -32,7 +23,7 @@
   margin: 10px;
 }
 
-.display-flex, .meter-info, .footer-content, .footer-center, .footer-right, .footer-left, .footer, .tab-item, .tab-btn, .tab-title, .right-tab, .left-tab, .settings-screen, .navigation-screen, .turn-container, .home-screen, .app-header, .btn, .app-logo, .tab-btn button, .mode-btn {
+.display-flex, .meter-info, .footer-content, .footer-center, .footer-right, .footer-left, .footer, .tab-item, .tab-btn, .tab-title, .right-tab, .left-tab, .settings-screen, .navigation-screen, .turn-container, .home-screen, .app-body, .app-header, .btn, .app-logo, .tab-btn button, .mode-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,7 +31,7 @@
 
 .app {
   display: flex;
-  height: 100vh;
+  height: 95vh;
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
@@ -53,8 +44,6 @@
 }
 
 .app-body {
-  display: flex;
-  align-items: center;
   flex: 6;
 }
 
@@ -63,12 +52,13 @@
 }
 
 .turn-container {
-  width: 20%;
+  width: 25%;
   flex-direction: column;
 }
 
 .navigation-screen {
   width: 100%;
+  height: 100%;
   justify-content: space-between;
 }
 
@@ -114,12 +104,37 @@
   opacity: 1;
 }
 
+.map-instruction {
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+}
+.map-instruction i {
+  font-size: 0.7rem;
+}
+
+.map-container {
+  position: relative;
+  height: 70%;
+  width: 40%;
+  border-radius: 10px;
+}
+
+.map-shadow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  box-shadow: inset 0px 0px 25px 35px white;
+}
+
 .footer {
   border-top: 3px solid #b1b1b1;
   width: 100%;
-  height: 12%;
   justify-content: space-between;
-  flex: 1;
+  flex: 0.7;
 }
 
 .footer-content, .footer-center, .footer-right, .footer-left {
@@ -175,22 +190,18 @@
     fill: white;
   }
 
-  .mode-color {
-    background-color: black;
-  }
-
   .footer-icon.active {
     color: white;
+  }
+
+  .map-shadow {
+    box-shadow: inset 0px 0px 25px 35px black;
   }
 }
 @media (prefers-color-scheme: light) {
   body {
     background: white;
     color: black;
-  }
-
-  .mode-color {
-    background-color: white;
   }
 
   .footer-icon.active {

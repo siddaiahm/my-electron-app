@@ -18,14 +18,20 @@
       "provider": "github",
       "repo": "my-electron-app",
       "owner": "siddaiah"
+    },
+    "win": {
+      "icon": "build/logo512.png"
+    },
+    "linux": {
+      "icon": "build/logo512.png"
     }
   },
   "dependencies": {
-    "@ant-design/icons": "^4.4.0",
+    "@mapbox/mapbox-gl-directions": "^4.1.0",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.0",
-    "antd": "^4.10.3",
+    "mapbox-gl": "1.13.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",

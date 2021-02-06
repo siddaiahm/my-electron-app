@@ -1,19 +1,19 @@
 import "./assets/style/index.css";
 import { channels, events } from "../shared/constants";
 import React, { useEffect, useRef, useState } from "react";
-import { BulbFilled } from "@ant-design/icons";
 import Footer from "./components/Footer";
 
 import Home from "./screens/Home";
 import Navigation from "./screens/Navigation";
 import Settings from "./screens/Settings";
+import Charge from "./components/charge";
 const { ipcRenderer } = window;
 
 function App() {
   const [isDark, setIsDark] = useState(false);
   const [data, setData] = useState({});
   const [isReady, setIsReady] = useState(false);
-  const [currentScreenIndex, setCurrentScreenIndex] = useState(2);
+  const [currentScreenIndex, setCurrentScreenIndex] = useState(0);
   const [currentTabIndex, setCurrentTabIndex] = useState(0);
   const [currentTab, setCurrentTab] = useState(0);
   let screenIndexRef = useRef();
@@ -107,7 +107,7 @@ function App() {
     },
     {
       name: "NAVI",
-      screen: <Navigation data={data} />,
+      screen: <Navigation data={data} isDark={isDark} />,
     },
     {
       name: "SETT",
@@ -335,7 +335,7 @@ function App() {
       eventName = events.SWITCH_TAB;
     }
     if (
-      SCREENS[currentScreenIndex].name === "SETT" &&
+      SCREENS[screenIndexRef.current].name === "SETT" &&
       !data.SWITCH_SCREEN &&
       tabIndexRef.current === 0
     ) {
@@ -409,9 +409,6 @@ function App() {
   return (
     <div className="app">
       <div className="app-header">
-        <button onClick={handleToggleDarkMode} className="mode-btn">
-          <BulbFilled style={{ color: isDark ? "white" : "black" }} />
-        </button>
         <button
           onClick={handleCharging}
           className="btn"
@@ -424,7 +421,15 @@ function App() {
         </button>
       </div>
       <div className="app-body">
-        {isReady ? SCREENS[currentScreenIndex].screen : "Loading....."}
+        {isReady ? (
+          data.CHARGING_STATUS ? (
+            <Charge {...data} />
+          ) : (
+            SCREENS[currentScreenIndex].screen
+          )
+        ) : (
+          "Loading....."
+        )}
       </div>
       <Footer
         currentScreen={SCREENS[currentScreenIndex].name}

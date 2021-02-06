@@ -1,73 +1,5 @@
 //home
-$color2: #1d698a;
-$color9: #c5c9ca;
 $color10: #b1b1b1;
-//charge
-$color11: #579ebd;
-$color12: #3c7087;
-
-//navigation
-$color13: #20a6e4;
-$color14: #2ecf55;
-//soc-color
-$soc-color1: #5b90a8;
-$soc-color2: #196688;
-//speed-color
-$speed-color1: #5c93a8;
-
-//inner-circle-color
-$inner-color1: #69c3e5;
-$inner-color1-dark: #243942;
-$inner-color2: #0fb4ff;
-$inner-color6: #6895a9;
-$inner-color7-dark: #111010;
-$inner-color3: #1b79a2;
-$inner-color4: #040404;
-
-$ring-size: 1.5%;
-$ring-color: $color12;
-$border: 1px solid black;
-
-$circle-width: 300px;
-$circle-height: $circle-width;
-
-@mixin shadow($level: 2, $inset: false) {
-  @if $inset {
-    @if $level == 1 {
-      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12),
-        inset 0 1px 2px rgba(0, 0, 0, 0.24);
-    } @else if $level == 2 {
-      box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.16),
-        inset 0 3px 6px rgba(0, 0, 0, 0.23);
-    } @else if $level == 3 {
-      box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.19),
-        inset 0 6px 6px rgba(0, 0, 0, 0.23);
-    } @else if $level == 4 {
-      box-shadow: inset 0 14px 28px rgba(0, 0, 0, 0.25),
-        inset 0 10px 10px rgba(0, 0, 0, 0.22);
-    } @else if $level == 5 {
-      box-shadow: inset 0 19px 38px rgba(0, 0, 0, 0.3),
-        inset 0 15px 12px rgba(0, 0, 0, 0.22);
-    }
-  } @else {
-    @if $level == 1 {
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    } @else if $level == 2 {
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    } @else if $level == 3 {
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    } @else if $level == 4 {
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-        0 10px 10px rgba(0, 0, 0, 0.22);
-    } @else if $level == 5 {
-      box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
-        0 15px 12px rgba(0, 0, 0, 0.22);
-    }
-  }
-}
-
-// @import url(https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@1,300&display=swap);
-// @import url(https://fonts.googleapis.com/css2?family=Exo:ital,wght@1,300&display=swap);
 
 @font-face {
   font-family: myFirstFont;
@@ -76,15 +8,6 @@ $circle-height: $circle-width;
 
 * {
   box-sizing: border-box;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.mode-color {
-  background-color: white;
 }
 
 .btn {
@@ -113,7 +36,7 @@ $circle-height: $circle-width;
 }
 .app {
   display: flex;
-  height: 100vh;
+  height: 95vh;
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
@@ -125,8 +48,7 @@ $circle-height: $circle-width;
   flex: 0.5;
 }
 .app-body {
-  display: flex;
-  align-items: center;
+  @extend .display-flex;
   flex: 6;
 }
 .home-screen {
@@ -135,12 +57,13 @@ $circle-height: $circle-width;
 }
 .turn-container {
   @extend .display-flex;
-  width: 20%;
+  width: 25%;
   flex-direction: column;
 }
 .navigation-screen {
   @extend .display-flex;
   width: 100%;
+  height: 100%;
   justify-content: space-between;
 }
 .settings-screen {
@@ -186,15 +109,38 @@ $circle-height: $circle-width;
     opacity: 1;
   }
 }
+
+.map-instruction {
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  i {
+    font-size: 0.7rem;
+  }
+}
+.map-container {
+  position: relative;
+  height: 70%;
+  width: 40%;
+  border-radius: 10px;
+}
+.map-shadow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  box-shadow: inset 0px 0px 25px 35px white;
+}
 // Footer
 
 .footer {
   border-top: 3px solid $color10;
   width: 100%;
-  height: 12%;
   @extend .display-flex;
   justify-content: space-between;
-  flex: 1;
+  flex: 0.7;
 }
 .footer-content {
   height: 100%;
@@ -255,13 +201,13 @@ $circle-height: $circle-width;
   text {
     fill: white;
   }
-  .mode-color {
-    background-color: black;
-  }
   .footer-icon {
     &.active {
       color: white;
     }
+  }
+  .map-shadow {
+    box-shadow: inset 0px 0px 25px 35px black;
   }
 }
 
@@ -269,9 +215,6 @@ $circle-height: $circle-width;
   body {
     background: white;
     color: black;
-  }
-  .mode-color {
-    background-color: white;
   }
   .footer-icon {
     &.active {

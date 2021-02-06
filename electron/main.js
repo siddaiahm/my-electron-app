@@ -1,13 +1,12 @@
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
-require("electron-reload");
+// require("electron-reload");
 let mainWindow;
 let splash;
 function createWindow() {
   splash = new BrowserWindow({
     width: 800,
     height: 600,
-    // transparent: true,
     frame: false,
     alwaysOnTop: true,
   });
@@ -22,7 +21,7 @@ function createWindow() {
     width: 800,
     height: 600,
     show: false,
-    // frame: false,
+    frame: false,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       nodeIntegration: true,

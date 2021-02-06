@@ -1,7 +1,6 @@
 import React from "react";
 
-function Settings({ tabInfo, currentTabIndex, reRender }) {
-  console.log(tabInfo.tabArray[currentTabIndex].component);
+function Settings({ tabInfo, currentTabIndex }) {
   return (
     <div className="settings-screen">
       <div className="left-tab">
